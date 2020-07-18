@@ -8,13 +8,10 @@ public:
 	CustomLinkedList();
 	~CustomLinkedList();
 
-	CustomLinkedListNode* head;
-	CustomLinkedListNode* tail;
-
+public:
 	int GetSize() override;
 
 private:
-	int size;
 	DataContainer* _GetElementAt(int index) override;
 	void _SetElement(int index, DataContainer* data) override;
 	void _SwapElements(int index1, int index2) override;
@@ -29,4 +26,11 @@ private:
 
 	bool _IndexLoopConditionMet(int count, int index);
 	bool _LoopEndConditionMet(CustomLinkedListNode* node);
+
+public:
+	CustomLinkedListNode* head;
+	CustomLinkedListNode* tail;
+
+private:
+	int _size;
 };

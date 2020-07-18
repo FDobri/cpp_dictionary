@@ -2,12 +2,14 @@
 
 class DataContainer
 {
-private:
-	int dataValue;
 public:
 	DataContainer(int value);
 	DataContainer();
-	~DataContainer();
+
+public:
 	int GetValue();
 	void SetValue(int value);
+
+private:
+	int _dataValue;
 };

@@ -4,7 +4,7 @@
 
 CustomLinkedList::CustomLinkedList()
 {
-	size = 0;
+	_size = 0;
 	head = nullptr;
 	tail = nullptr;
 }
@@ -25,7 +25,7 @@ CustomLinkedList::~CustomLinkedList()
 
 int CustomLinkedList::GetSize()
 {
-	return size;
+	return _size;
 }
 
 DataContainer* CustomLinkedList::_GetElementAt(int index)
@@ -44,7 +44,6 @@ DataContainer* CustomLinkedList::_GetElementAt(int index)
 	return temp->data;
 }
 
-// Similar code to that of _GetElementAt, should refactor somehow to not duplicated the code (in the future)
 void CustomLinkedList::_SetElement(int index, DataContainer* data)
 {
 	int count = 0;
@@ -98,9 +97,9 @@ void CustomLinkedList::_InsertAt(int index, DataContainer* data)
 	int count = 0;
 	CustomLinkedListNode* newNode = new CustomLinkedListNode(data);
 
-	if (index != 0 && index != size)
+	if (index != 0 && index != _size)
 	{
-		++size;
+		++_size;
 		CustomLinkedListNode* elementBefore = head;
 		CustomLinkedListNode* elementAfter = nullptr;
 		while (count < index - 1)
@@ -111,11 +110,6 @@ void CustomLinkedList::_InsertAt(int index, DataContainer* data)
 		elementAfter = elementBefore->next;
 		elementBefore->next = newNode;
 		newNode->next = elementAfter;
-		//if (index = size - 1)					// if index in the params was equal to the size it means that we have to push back,
-		//{										// therefore, set the tail to point to the newly added element.
-		//	tail->next = newNode;
-		//	tail = newNode;
-		//}
 	}
 	else if (index == 0)
 	{
@@ -140,7 +134,7 @@ void CustomLinkedList::_PushToEnd(DataContainer* data)
 		head = newNode;
 		tail = newNode;
 	}
-	++size;
+	++_size;
 }
 
 void CustomLinkedList::_PushToStart(DataContainer* data)
@@ -157,12 +151,12 @@ void CustomLinkedList::_PushToStart(DataContainer* data)
 		head = newNode;
 		tail = newNode;
 	}
-	++size;
+	++_size;
 }
 
 void CustomLinkedList::_Remove(int index)
 {
-	if (index != 0 && index != size - 1)
+	if (index != 0 && index != _size - 1)
 	{
 		CustomLinkedListNode* previousNode = head;
 		CustomLinkedListNode* currentNode = head;
@@ -178,7 +172,7 @@ void CustomLinkedList::_Remove(int index)
 		currentNode = nullptr;
 		previousNode = nullptr;
 		delete previousNode;
-		--size;
+		--_size;
 	}
 	else if (index == 0)
 	{
@@ -204,7 +198,7 @@ void CustomLinkedList::_RemoveFromEnd()
 	tail->next = nullptr;
 	previousNode = nullptr;
 	delete previousNode;
-	--size;
+	--_size;
 }
 
 void CustomLinkedList::_RemoveFromStart()
@@ -213,7 +207,7 @@ void CustomLinkedList::_RemoveFromStart()
 	head = head->next;
 	delete temp;
 	temp = nullptr;
-	--size;
+	--_size;
 }
 
 bool CustomLinkedList::_IndexLoopConditionMet(int c, int i)

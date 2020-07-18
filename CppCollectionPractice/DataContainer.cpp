@@ -3,24 +3,20 @@
 
 DataContainer::DataContainer(int x)
 {
-	dataValue = x;
+	_dataValue = x;
 }
 
 DataContainer::DataContainer()
 {
-	dataValue = 0;
-}
-
-DataContainer::~DataContainer()
-{
+	_dataValue = 0;
 }
 
 int DataContainer::GetValue()
 {
-	return dataValue;
+	return _dataValue;
 }
 
 void DataContainer::SetValue(int x)
 {
-	dataValue = x;
+	_dataValue = x;
 }

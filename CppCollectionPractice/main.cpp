@@ -64,25 +64,23 @@ void TestBubbleSort(Collection &customCollection)
 
 int main()
 {
-	CustomDictionary* dick = new CustomDictionary();
+	CustomDictionary* dict = new CustomDictionary();
 	try
 	{
-		dick->AddElement(2121, new DataContainer(5));
-		char nekiChar[10] = { 'K', 'i', 't', 'a', 'u', 'b', 'i', 'l', 'a', '\0' };
-		dick->AddElement(nekiChar, new DataContainer(5));
-		dick->RemoveElement(2121);
-		dick->RemoveElement(nekiChar);
-		dick->AddElement(2121, new DataContainer(5));
-		dick->RemoveElement(52309);
+		dict->AddElement(2121, new DataContainer(5));
+		char nekiChar[10] = { 'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r', '\0' };
+		dict->AddElement(nekiChar, new DataContainer(5));
+		dict->RemoveElement(2121);
+		dict->RemoveElement(nekiChar);
+		dict->AddElement(2121, new DataContainer(5));
+		dict->RemoveElement(52309);
 	}
 	catch (int error)
 	{
 		std::cout << error << std::endl;
 	}
 
-
 	int x;
 	std::cin >> x;
-
 	return 0;
 }

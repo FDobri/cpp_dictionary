@@ -5,25 +5,25 @@
 
 CustomVector::CustomVector()
 {
-	allocatedSize = INITIAL_ARRAY_SIZE;
-	vectorArray = (DataContainer*)malloc(allocatedSize * sizeof(DataContainer));
-	size = 0;
+	_allocatedSize = INITIAL_ARRAY_SIZE;
+	_vectorArray = (DataContainer*)malloc(_allocatedSize * sizeof(DataContainer));
+	_size = 0;
 }
 
 CustomVector::CustomVector(int desiredSize)
 {
-	vectorArray = (DataContainer*)malloc(desiredSize * sizeof(DataContainer));
-	size = 0;
-	allocatedSize = desiredSize;
+	_vectorArray = (DataContainer*)malloc(desiredSize * sizeof(DataContainer));
+	_size = 0;
+	_allocatedSize = desiredSize;
 }
 
 CustomVector::~CustomVector()
 {
-	if (allocatedSize != 0)
+	if (_allocatedSize != 0)
 	{
-		free(vectorArray);
+		free(_vectorArray);
 	}
-	vectorArray = nullptr;
+	_vectorArray = nullptr;
 }
 
 #pragma endregion
@@ -32,7 +32,7 @@ CustomVector::~CustomVector()
 
 void CustomVector::_PushToEnd(DataContainer* value)
 {
-	_AllocateAndInsert(size, value);
+	_AllocateAndInsert(_size, value);
 }
 
 void CustomVector::_PushToStart(DataContainer* value)
@@ -51,7 +51,7 @@ void CustomVector::_InsertAt(int index, DataContainer* value)
 
 void CustomVector::_RemoveFromEnd()
 {
-	_AllocateAndRemove(size - 1);
+	_AllocateAndRemove(_size - 1);
 }
 
 void CustomVector::_RemoveFromStart()
@@ -71,24 +71,24 @@ void CustomVector::_Remove(int index)
 
 int CustomVector::GetSize()
 {
-	return size;
+	return _size;
 }
 
 DataContainer* CustomVector::_GetElementAt(int index)
 {
-	return &vectorArray[index];
+	return &_vectorArray[index];
 }
 
 void CustomVector::_SetElement(int index, DataContainer* data)
 {
-	vectorArray[index] = *data;
+	_vectorArray[index] = *data;
 }
 
 void CustomVector::_SwapElements(int index1, int index2)
 {
-	DataContainer temp = vectorArray[index2];
-	vectorArray[index2] = vectorArray[index1];
-	vectorArray[index1] = temp;
+	DataContainer temp = _vectorArray[index2];
+	_vectorArray[index2] = _vectorArray[index1];
+	_vectorArray[index1] = temp;
 }
 
 #pragma endregion
@@ -97,66 +97,66 @@ void CustomVector::_SwapElements(int index1, int index2)
 
 void CustomVector::_AllocateAndInsert(int index, DataContainer* elementToInsert)
 {
-	++size;
-	int requiredAllocatedSize = _GetRequiredAllocatedSize(size);
-	if (requiredAllocatedSize != allocatedSize)
+	++_size;
+	int requiredAllocatedSize = _GetRequiredAllocatedSize(_size);
+	if (requiredAllocatedSize != _allocatedSize)
 	{
-		allocatedSize = requiredAllocatedSize;
-		DataContainer* temp = (DataContainer*)malloc(allocatedSize * sizeof(DataContainer));
+		_allocatedSize = requiredAllocatedSize;
+		DataContainer* temp = (DataContainer*)malloc(_allocatedSize * sizeof(DataContainer));
 		for (int i = 0; i < index; i++)
 		{
-			temp[i] = vectorArray[i];
+			temp[i] = _vectorArray[i];
 		}
 		temp[index] = *elementToInsert;
-		for (int i = index; i < size - 1; i++)
+		for (int i = index; i < _size - 1; i++)
 		{
-			temp[i + 1] = vectorArray[i];
+			temp[i + 1] = _vectorArray[i];
 		}
-		free(vectorArray);
-		vectorArray = temp;
+		free(_vectorArray);
+		_vectorArray = temp;
 		temp = nullptr;
 	}
 	else
 	{
-		if (index == size)
+		if (index == _size)
 		{
-			vectorArray[index] = *elementToInsert;
+			_vectorArray[index] = *elementToInsert;
 		}
 		else
 		{
-			for (int i = size - 1; i > index; --i)
+			for (int i = _size - 1; i > index; --i)
 			{
-				vectorArray[i] = vectorArray[i - 1];
+				_vectorArray[i] = _vectorArray[i - 1];
 			}
-			vectorArray[index] = *elementToInsert;
+			_vectorArray[index] = *elementToInsert;
 		}
 	}
 }
 
 void CustomVector::_AllocateAndRemove(int index)
 {
-	int requiredAllocatedSize = _GetRequiredAllocatedSize(size);
-	if (allocatedSize == requiredAllocatedSize)
+	int requiredAllocatedSize = _GetRequiredAllocatedSize(_size);
+	if (_allocatedSize == requiredAllocatedSize)
 	{
-		for (int i = index; i < size - 1; ++i)
+		for (int i = index; i < _size - 1; ++i)
 		{
-			vectorArray[i] = vectorArray[i + 1];
+			_vectorArray[i] = _vectorArray[i + 1];
 		}
 	}
 	else
 	{
 		//realloc could be very useful here
-		DataContainer* temp = (DataContainer*)malloc((allocatedSize * sizeof(DataContainer)));
+		DataContainer* temp = (DataContainer*)malloc((_allocatedSize * sizeof(DataContainer)));
 		for (int i = 0; i < index; i++)
 		{
-			temp[i] = vectorArray[i];
+			temp[i] = _vectorArray[i];
 		}
-		for (int i = index; i < size - 1; ++i)
+		for (int i = index; i < _size - 1; ++i)
 		{
-			temp[i] = vectorArray[i + 1];
+			temp[i] = _vectorArray[i + 1];
 		}
 	}
-	--size;
+	--_size;
 }
 
 int CustomVector::_GetRequiredAllocatedSize(int size)

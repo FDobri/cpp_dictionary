@@ -4,25 +4,22 @@
 class Collection
 {
 public:
-	virtual ~Collection();
-	//sort
 	virtual void BubbleSort();
 
-	//inserts
 	void PushToEnd(DataContainer* data);
 	void PushToStart(DataContainer* data);
 	void InsertAt(int index, DataContainer* data);
 
-	//removes
+	void SetElement(int index, DataContainer* dc);
+	void SwapElements(int index1, int index2);
+
 	void RemoveFromEnd();
 	void RemoveFromStart();
 	void Remove(int index);
 
-	//misc
 	virtual int GetSize() = 0;
 	DataContainer* GetElementAt(int index);
-	void SetElement(int index, DataContainer* dc);
-	void SwapElements(int index1, int index2);
+
 private:
 	virtual void _SwapElements(int firstIndex, int secondIndex) = 0;
 
@@ -38,5 +35,5 @@ private:
 
 	void _InsertionCheck(int index);
 	void _RemovalCheck(int index);
-	void _GetElementCheck(int index); //used for both set and get index validation
+	void _GetElementCheck(int index);
 };

@@ -8,14 +8,10 @@ public:
 	CustomVector(int allocatedSize);
 	~CustomVector();
 
+public:
 	int GetSize() override;
 
 private:
-	const int INITIAL_ARRAY_SIZE = 8;
-	DataContainer* vectorArray;
-	int allocatedSize;
-	int size;
-
 	void _AllocateAndInsert(int index, DataContainer* elementToInsert);
 	void _AllocateAndRemove(int index);
 	int _GetRequiredAllocatedSize(int size);
@@ -31,4 +27,11 @@ private:
 	void _Remove(int index) override;
 	void _RemoveFromEnd() override;
 	void _RemoveFromStart() override;
+
+private:
+	DataContainer* _vectorArray;
+	int _allocatedSize;
+	int _size;
+
+	const int INITIAL_ARRAY_SIZE = 8;
 };

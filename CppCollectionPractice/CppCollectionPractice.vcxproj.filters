@@ -65,9 +65,6 @@
     <ClCompile Include="CustomLinkedListNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DictKey.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DictNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

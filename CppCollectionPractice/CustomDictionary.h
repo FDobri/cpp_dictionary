@@ -6,15 +6,17 @@
 
 class CustomDictionary
 {
+public:
+	CustomDictionary();
+	~CustomDictionary();
+
 private:
-	//CustomVector** _HashArray;
 	CustomLinkedList** _HashArray;
 	unsigned int _GetHashIndex(DictKey* dictKey);
 	void _AddDictNode(int index, DictNode* data);
 	void _Remove(DictKey* key);
+
 public:
-	CustomDictionary();
-	~CustomDictionary();
 	static const unsigned int SIZE = 1024;
 	void AddElement(char* key, DataContainer* dc);
 	void AddElement(int key, DataContainer* dc);

@@ -70,10 +70,6 @@ void Collection::RemoveFromStart()
 	_RemoveFromStart();
 }
 
-Collection::~Collection()
-{
-}
-
 void Collection::_GetElementCheck(int index)
 {
 	if (index < 0 || index >(GetSize() - 1))
@@ -92,7 +88,7 @@ void Collection::_InsertionCheck(int index)
 
 void Collection::_RemovalCheck(int index)
 {
-	if (index < 0 || index >(GetSize() - 1)) // moze se napravit u jedan bool check da se smanji dupliciranje koda (line 75)
+	if (index < 0 || index >(GetSize() - 1))
 	{
 		throw - 1;
 	}

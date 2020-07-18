@@ -6,9 +6,8 @@
 class DictNode : public DataContainer
 {
 public:
-	DictNode();
 	DictNode(DictKey* dictKey, DataContainer* data);
-	~DictNode();
 
+public:
 	DictKey* dictKey;
 };

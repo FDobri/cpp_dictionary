@@ -1,9 +1,5 @@
 #include "CustomLinkedListNode.h"
 
-CustomLinkedListNode::CustomLinkedListNode()
-{
-}
-
 CustomLinkedListNode::CustomLinkedListNode(DataContainer* dataContainer)
 {
 	data = dataContainer;

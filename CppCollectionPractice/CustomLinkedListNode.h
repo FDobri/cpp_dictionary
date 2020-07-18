@@ -5,10 +5,10 @@
 class CustomLinkedListNode
 {
 public:
-	CustomLinkedListNode();
 	CustomLinkedListNode(DataContainer* data);
 	~CustomLinkedListNode();
 
+public:
 	DataContainer* data;
 	CustomLinkedListNode* next;
 };

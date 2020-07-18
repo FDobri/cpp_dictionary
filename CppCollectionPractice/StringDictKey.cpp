@@ -1,18 +1,9 @@
 #include "StringDictKey.h"
 #include <string.h>
 
-StringDictKey::StringDictKey()
-{
-}
-
 StringDictKey::StringDictKey(char* key)
 {
 	_Key = key;
-}
-
-
-StringDictKey::~StringDictKey()
-{
 }
 
 int StringDictKey::GetHashCode()

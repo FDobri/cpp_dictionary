@@ -1,17 +1,8 @@
 #include "IntDictKey.h"
 
-IntDictKey::IntDictKey()
-{
-}
-
 IntDictKey::IntDictKey(int key)
 {
 	_Key = key;
-}
-
-
-IntDictKey::~IntDictKey()
-{
 }
 
 int IntDictKey::GetHashCode()

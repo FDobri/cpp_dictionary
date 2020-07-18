@@ -81,12 +81,10 @@ void CustomDictionary::_AddDictNode(int index, DictNode* data)
 		int linkedListSize = _HashArray[index]->GetSize();
 
 		CustomLinkedListNode* temp = _HashArray[index]->head;
-		//DictNode* node = static_cast<DictNode*>(_HashArray[index]->GetElementAt(0));
 
 		while (count < linkedListSize)
 		{
 			DictNode* node = static_cast<DictNode*>(temp->data);
-			// if (static_cast<IntDictKey*>(node->dictKey)->GetKey() == static_cast<IntDictKey*>(data->dictKey)->GetKey())
 			if ((*node->dictKey) == (*data->dictKey))
 			{
 				throw - 1;
